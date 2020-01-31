@@ -22,19 +22,13 @@ export class ProductFormComponent {
     private productService: ProductService) {
 
     this.categories$ = categoryService.getCategories();
-    console.log('this.route.snapshot.params', this.route.snapshot.params);
-    // console.log('this.route.snapshot.paramMap', this.route.snapshot.paramMap.keys);
-    // console.log('this.route.snapshot.queryParams', this.route.snapshot.queryParams);
-    // console.log('this.route.snapshot.queryParamMap', this.route.snapshot.queryParamMap.keys);
     let id = this.route.snapshot.params['id'];
     if (id) {
-      this.productService.get(id).valueChanges().pipe(
-        map(p => {
+      this.productService.get(id).valueChanges().pipe(take(1))
+        .subscribe(p => {
           this.product = p;
-        })
-      );
-    }
-    
+        });
+    }    
    }
 
    save(product) {
