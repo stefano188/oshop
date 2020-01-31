@@ -4,6 +4,11 @@ Custom Validation with ng2-validation
 https://github.com/yuyang041060120/ng2-validation
 npm install ng2-validation --save
 
+*******************************************************
+Bootstrap 
+https://getbootstrap.com/docs/4.0/layout/grid/
+https://getbootstrap.com/docs/4.4/components/card/
+
 
 *******************************************************
 Angular Firebase objects keys not being displayed.
