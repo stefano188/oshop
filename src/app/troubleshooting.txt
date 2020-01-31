@@ -1,0 +1,39 @@
+
+*******************************************************
+Angular Firebase objects keys not being displayed.
+
+https://stackoverflow.com/questions/47291644/angular-firebase-5-objects-keys-not-being-displayed-so-cant-delete
+
+  service.ts
+getCategories() {
+    let ref = this.db.list("/categories");
+    return ref.snapshotChanges().pipe(map(changes => {
+      return changes.map(c => {
+        const key = c.key;
+        const val = c.payload.val();
+        return { key, val } ;
+      })
+    }));
+  }
+
+  component.ts
+export class ProductFormComponent {
+  categories$;
+  constructor(categoryService: CategoryService) {
+    this.categories$ = categoryService.getCategories();
+   }
+
+  component.html
+<select ngModel name="category" id="category" class="form-control">
+    <option value=""></option>
+    <option *ngFor="let c of categories$ | async" [value]="c.key">
+        {{ c.val.name }}
+    </option>
+</select>
+
+...
+"angularfire2": "^5.3.0",
+"firebase": "^7.7.0",
+"firebase-tools": "^7.12.1",
+...
+
