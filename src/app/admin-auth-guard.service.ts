@@ -13,7 +13,6 @@ export class AdminAuthGuard implements CanActivate {
   constructor(private auth: AuthService, private userService: UserService) { }
 
   canActivate() {
-    console.log('CALLING AdminAuthGuard canActivate');
     return this.auth.appUser$.pipe(map(appUser => appUser.isAdmin));
   }
 }

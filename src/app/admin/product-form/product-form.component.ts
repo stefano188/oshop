@@ -2,6 +2,7 @@ import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireList } from 'angularfire2/database';
 import { ProductService } from 'src/app/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -12,13 +13,16 @@ export class ProductFormComponent {
 
   categories$;
 
-  constructor(categoryService: CategoryService, private productService: ProductService) {
+  constructor(
+    private router: Router,
+    private categoryService: CategoryService, 
+    private productService: ProductService) {
     this.categories$ = categoryService.getCategories();
    }
 
    save(product) {
-     console.log(product);
      this.productService.create(product);
+     this.router.navigate(['/admin/products']);
    }
 
 }
