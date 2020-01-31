@@ -4,6 +4,10 @@ Angular Firebase objects keys not being displayed.
 
 https://stackoverflow.com/questions/47291644/angular-firebase-5-objects-keys-not-being-displayed-so-cant-delete
 
+https://github.com/angular/angularfire/issues/1283
+
+https://github.com/angular/angularfire/blob/master/docs/firestore/collections.md#snapshotchanges
+
   service.ts
 getCategories() {
     let ref = this.db.list("/categories");
