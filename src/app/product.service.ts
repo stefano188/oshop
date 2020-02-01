@@ -1,3 +1,4 @@
+import { Product } from './modules/product';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { map } from 'rxjs/operators';
@@ -20,7 +21,7 @@ export class ProductService {
         const val = p.payload.val();
         return { key, val };
       })
-    }))
+    }));
   }
 
   get(productId) {
