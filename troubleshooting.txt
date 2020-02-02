@@ -12,6 +12,23 @@ Bootstrap
 https://getbootstrap.com/docs/4.0/layout/grid/
 https://getbootstrap.com/docs/4.4/components/card/
 
+*******************************************************
+DATA TABLE 
+
+https://www.ngdevelop.tech/best-angular-tables/
+
+# OLD https://github.com/ggmod/angular-2-data-table
+# dependencies: "angular-2-data-table": "^0.1.2"
+
+# OLD https://github.com/brunano21/angular-4-data-table
+# dependencies: "angular5-data-table": "^1.0.3",
+
+
+https://www.npmjs.com/package/ng-angular8-datatable
+npm i ng-angular8-datatable --save
+https://github.com/JRafael91/ng-angular8-datatable#readme
+
+
 
 *******************************************************
 Angular Firebase objects keys not being displayed.
@@ -51,7 +68,11 @@ export class ProductFormComponent {
 
 ...
 "angularfire2": "^5.3.0",
+"bootstrap": "^4.4.1",
 "firebase": "^7.7.0",
 "firebase-tools": "^7.12.1",
+"g": "^2.0.1",
+"ng-angular8-datatable": "^0.9.11",
+"ng2-validation": "^4.2.0",
 ...
 

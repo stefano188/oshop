@@ -68,11 +68,11 @@
                 <button class="btn btn-primary">Save</button>
                 <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
             
-                <p>{{ f.value | json }}</p>
+                <!-- <p>{{ f.value | json }}</p> -->
             </form>
         </div>
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div *ngIf="product.title" class="card" style="width: 18rem;">
                 <img [src]="imageUrl.value" class="card-img-top" *ngIf="imageUrl.value" >
                 <div class="card-body">
                     <h5 class="card-title">{{ title.value }}</h5>

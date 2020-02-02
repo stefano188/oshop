@@ -1,0 +1,33 @@
+
+<table class="table table-striped" 
+    [svData]="data" 
+    #sv="svDataTable" 
+    [svRowsOnPage]="5" 
+    svSortBy="name" 
+    svSortOrder="asc">
+    <thead>
+    <tr>
+        <th>
+            <sv-default-sorter by="name">Name</sv-default-sorter>
+        </th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of sv.data">
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td class="text-right">{{ item.age }}</td>
+        <td>{{ item.city | uppercase }}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+            <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>

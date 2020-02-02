@@ -13,6 +13,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   products: Product[];
   filteredProducts: Product[];
+  itemCount: number;
 
   constructor(private productService: ProductService) {
     this.subscription = productService.getAll()
@@ -29,6 +30,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
           arr.push(prod);
         });
         this.filteredProducts = this.products = arr;
+        this.itemCount = this.filteredProducts.length;
       }
     );
   }
