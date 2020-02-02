@@ -1,9 +1,9 @@
+import { Product } from 'src/app/modules/product';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireList } from 'angularfire2/database';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { take, map } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -13,7 +13,7 @@ import { take, map } from 'rxjs/operators';
 export class ProductFormComponent {
 
   categories$;
-  product = {};
+  product = {} as Product;
   id;
 
   constructor(
@@ -27,7 +27,7 @@ export class ProductFormComponent {
     if (this.id) {
       this.productService.get(this.id).valueChanges().pipe(take(1))
         .subscribe(p => {
-          this.product = p;
+          this.product = p as Product;
         });
     }
    }
