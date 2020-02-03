@@ -16,32 +16,35 @@ export class ProductsComponent implements OnDestroy {
   subscription: Subscription;
   products: Product[] = [];
   filteredProducts: Product[] = [];
-  categories$;
+
   category: string;
 
   constructor(
     private route: ActivatedRoute,
-    productService: ProductService, 
-    categoryService: CategoryService) { 
+    productService: ProductService) {
 
       this.subscription = productService.getAll().subscribe(p => {
-        this.products = ProductTransformer.firebaseProductToAppProduct(p as [{key, val}]);
+        this.filteredProducts = this.products = ProductTransformer.firebaseProductToAppProduct(p as [{key, val}]);
+
+        this.route.queryParamMap.subscribe(param => {
+          this.category = param.get('category');
+          this.filteredProducts = (this.category)
+            ? this.products.filter(p => p.category === this.category)
+            : this.products;
+        });
       });
-      
-      this.categories$ = categoryService.getAll();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onCategoryChanged() {
+  /* onCategoryChanged() {
     this.route.queryParamMap.subscribe(param => {
       this.category = param.get('category');
-      this.filteredProducts = (this.category) 
+      this.filteredProducts = (this.category)
         ? this.products.filter(p => p.category === this.category)
         : this.products;
     });
-    
-  }
+  } */
 }
