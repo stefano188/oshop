@@ -18,10 +18,8 @@ DATA TABLE
 https://www.ngdevelop.tech/best-angular-tables/
 
 # OLD https://github.com/ggmod/angular-2-data-table
-# dependencies: "angular-2-data-table": "^0.1.2"
 
 # OLD https://github.com/brunano21/angular-4-data-table
-# dependencies: "angular5-data-table": "^1.0.3",
 
 
 https://www.npmjs.com/package/ng-angular8-datatable
@@ -29,6 +27,19 @@ npm i ng-angular8-datatable --save
 https://github.com/JRafael91/ng-angular8-datatable#readme
 
 
+*******************************************************
+TYPESCRIPT Cheatsheet
+https://devhints.io/typescript
+
+*******************************************************
+RXJS 
+take operator
+https://www.learnrxjs.io/learn-rxjs/operators/filtering/take
+
+
+*******************************************************
+FIREBASE CRUD  (var.$key deprecated)
+https://alligator.io/angular/firebase-crud-operations/
 
 *******************************************************
 Angular Firebase objects keys not being displayed.
@@ -65,6 +76,18 @@ export class ProductFormComponent {
         {{ c.val.name }}
     </option>
 </select>
+
+
+
+<a *ngFor="let c of categories$ | async" 
+    routerLink="/"
+    [queryParams]="{ category: c.key }"
+    [class.active]="category === c.key"
+    class="list-group-item list-group-item-action">
+    {{ c.val.name }}
+</a>
+
+
 
 ...
 "angularfire2": "^5.3.0",

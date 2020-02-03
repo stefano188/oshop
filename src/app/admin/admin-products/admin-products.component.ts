@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/modules/product';
+import { ProductTransformer } from 'src/app/util/product-transformer';
 
 @Component({
   selector: 'app-admin-products',
@@ -18,18 +19,19 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {
     this.subscription = productService.getAll()
       .subscribe(p => {
-        const arr: Product[] = [];
-        p.forEach(element => {
-          const prod: Product = {
-            key: element.key,
-            title: (element.val as any).title,
-            price: (element.val as any).price,
-            category: (element.val as any).category,
-            imageUrl: (element.val as any).imageUrl
-          };
-          arr.push(prod);
-        });
-        this.filteredProducts = this.products = arr;
+        // const arr: Product[] = [];
+        // p.forEach(element => {
+        //   const prod: Product = {
+        //     key: element.key,
+        //     title: (element.val as any).title,
+        //     price: (element.val as any).price,
+        //     category: (element.val as any).category,
+        //     imageUrl: (element.val as any).imageUrl
+        //   };
+        //   arr.push(prod);
+        // });
+        const productArray: Product[] = ProductTransformer.firebaseProductToAppProduct(p as [{key, val}]);
+        this.filteredProducts = this.products = productArray;
         this.itemCount = this.filteredProducts.length;
       }
     );

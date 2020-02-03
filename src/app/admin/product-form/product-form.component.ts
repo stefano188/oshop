@@ -22,7 +22,7 @@ export class ProductFormComponent {
     private categoryService: CategoryService, 
     private productService: ProductService) {
 
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.productService.get(this.id).valueChanges().pipe(take(1))

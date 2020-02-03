@@ -11,7 +11,7 @@ export class CategoryService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  getCategories() {
+  getAll() {
     let ref = this.db.list("/categories");
     return ref.snapshotChanges().pipe(map(changes => {
       return changes.map(c => {
