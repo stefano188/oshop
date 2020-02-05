@@ -41,6 +41,26 @@ https://www.learnrxjs.io/learn-rxjs/operators/filtering/take
 FIREBASE CRUD  (var.$key deprecated)
 https://alligator.io/angular/firebase-crud-operations/
 
+
+FIREBASE Database Rules
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth != null",
+    "categories": {
+    	".read": true
+  	},
+  	"products": {
+    	".read": true
+  	},
+  	"shopping-carts": {
+    	".read": true,
+    	".write": true
+  	}
+  },
+}
+
+
 *******************************************************
 Angular Firebase objects keys not being displayed.
 
