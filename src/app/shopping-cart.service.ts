@@ -22,7 +22,11 @@ export class ShoppingCartService {
     const cartId = await this.getOrCreateCartId();
     return this.db.object("/shopping-carts/" + cartId)
       .snapshotChanges()
-        .pipe(map(cart => new ShoppingCart((cart.payload.val() as any).items)));
+        .pipe(map(cart => { 
+          return cart.key 
+            ? new ShoppingCart((cart.payload.val() as any).items) 
+            : new ShoppingCart([]);
+        } ));
   }
 
   private getItem(cartId: string, productId: string) {
