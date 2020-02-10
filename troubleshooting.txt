@@ -60,6 +60,11 @@ FIREBASE Database Rules
   },
 }
 
+*******************************************************
+FIREBASE HOST DEPLOY
+Project Console: https://console.firebase.google.com/project/oshop-1632c/overview
+Hosting URL: https://oshop-1632c.firebaseapp.com
+
 
 *******************************************************
 Angular Firebase objects keys not being displayed.

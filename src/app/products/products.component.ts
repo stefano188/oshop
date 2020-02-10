@@ -4,7 +4,6 @@ import { ProductService } from '../product.service';
 import { Subscription } from 'rxjs';
 import { Product } from '../modules/product';
 import { ProductTransformer } from '../util/product-transformer';
-import { CategoryService } from '../category.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingCart } from '../modules/shopping-cart';
 
