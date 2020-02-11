@@ -25,7 +25,7 @@ export class ShoppingCartService {
         .pipe(map(cart => { 
           return cart.key 
             ? new ShoppingCart((cart.payload.val() as any).items) 
-            : new ShoppingCart([]);
+            : new ShoppingCart({});
         } ));
   }
 
