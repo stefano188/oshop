@@ -57,7 +57,13 @@ export class ShoppingCartService {
       .pipe(take(1))
         .subscribe(res => {
           const currentQuantity = res.key ? (res.payload.val() as any).quantity : 0;
-          item.update({product, quantity: currentQuantity + quantityChange});
+          item.update({
+            //product, quantity: currentQuantity + quantityChange
+            title: product.title,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            quantity: currentQuantity + quantityChange
+          });
     });
   }
 
