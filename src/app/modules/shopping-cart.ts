@@ -6,12 +6,10 @@ export class ShoppingCart {
 
     constructor(public itemsMap: { [productId: string]: ShoppingCartItem }) {
         this.itemsMap = itemsMap || {};
+        // tslint:disable-next-line: forin
         for (let productId in itemsMap) {
             const item = itemsMap[productId];
-            let x = new ShoppingCartItem();
-            Object.assign(x, item);
-            x.key = productId;
-            this.items.push(x);
+            this.items.push(new ShoppingCartItem({ ...item, key: productId }));
         }
     }
 
@@ -22,6 +20,7 @@ export class ShoppingCart {
 
     get totalPrice() {
         let sum = 0;
+        // tslint:disable-next-line: forin
         for (let productId in this.items) {
             sum += this.items[productId].totalPrice;
         }

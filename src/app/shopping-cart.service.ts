@@ -12,21 +12,34 @@ export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  private create() {
-    return this.db.list("/shopping-carts").push({
-      dateCreated: new Date().getTime()
-    });
-  }
-
   async getCart(): Promise<Observable<ShoppingCart>> {
     const cartId = await this.getOrCreateCartId();
     return this.db.object("/shopping-carts/" + cartId)
       .snapshotChanges()
         .pipe(map(cart => { 
           return cart.key 
-            ? new ShoppingCart((cart.payload.val() as any).items) 
+            ? new ShoppingCart((cart.payload.val() as any).items)
             : new ShoppingCart({});
         } ));
+  }
+
+  async addToCart(product: Product) {
+    this.updateItem(product, 1);
+  }
+
+  async removeFromCart(product: Product) {
+    this.updateItem(product, -1);
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId();
+    this.db.object("/shopping-carts/" + cartId + "/items").remove();
+  }
+
+  private create() {
+    return this.db.list("/shopping-carts").push({
+      dateCreated: new Date().getTime()
+    });
   }
 
   private getItem(cartId: string, productId: string) {
@@ -42,28 +55,24 @@ export class ShoppingCartService {
     return cart.key;
   }
 
-  async addToCart(product: Product) {
-    this.updateItemQuantity(product, 1);
-  }
-
-  async removeFromCart(product: Product) {
-    this.updateItemQuantity(product, -1);
-  }
-
-  private async updateItemQuantity(product: Product, quantityChange: number) {
+  private async updateItem(product: Product, quantityChange: number) {
     const cartId = await this.getOrCreateCartId();
     const item = this.getItem(cartId, product.key);
     item.snapshotChanges()
       .pipe(take(1))
         .subscribe(res => {
           const currentQuantity = res.key ? (res.payload.val() as any).quantity : 0;
-          item.update({
-            //product, quantity: currentQuantity + quantityChange
-            title: product.title,
-            price: product.price,
-            imageUrl: product.imageUrl,
-            quantity: currentQuantity + quantityChange
-          });
+          const quantityUpdated = currentQuantity + quantityChange;
+          if (quantityUpdated === 0) {
+            item.remove();
+          } else {
+            item.update({
+              title: product.title,
+              price: product.price,
+              imageUrl: product.imageUrl,
+              quantity: quantityUpdated
+            });
+          }
     });
   }
 

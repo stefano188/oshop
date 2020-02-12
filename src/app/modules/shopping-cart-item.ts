@@ -1,12 +1,14 @@
+import { ShoppingCart } from './shopping-cart';
 
 export class ShoppingCartItem {
-    key: string
+    key: string;
     title: string;
     price: number;
     imageUrl: string;
     quantity: number;
-    
-    constructor() {
+
+    constructor(init?: Partial<ShoppingCartItem>) {
+        Object.assign(this, init);
     }
 
     get totalPrice() {
