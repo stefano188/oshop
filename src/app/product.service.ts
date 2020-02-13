@@ -19,7 +19,16 @@ export class ProductService {
       return changes.map(p => {
         const key = p.key;
         const val = p.payload.val();
-        return { key, val };
+        
+        const prod: Product = {
+          key: key,
+          title: (val as any).title,
+          price: (val as any).price,
+          category: (val as any).category,
+          imageUrl: (val as any).imageUrl
+        };
+        return prod;
+        //return { key, val };
       })
     }));
   }

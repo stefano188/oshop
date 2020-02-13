@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/modules/product';
-import { ProductTransformer } from 'src/app/util/product-transformer';
 
 @Component({
   selector: 'app-admin-products',
@@ -18,9 +17,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
 
   constructor(private productService: ProductService) {
     this.subscription = productService.getAll()
-      .subscribe(p => {
-        const productArray: Product[] = ProductTransformer.firebaseProductToAppProduct(p as [{key, val}]);
-        this.filteredProducts = this.products = productArray;
+      .subscribe(p => {        
+        this.filteredProducts = this.products = p;
         this.itemCount = this.filteredProducts.length;
       }
     );
