@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from './../shopping-cart.service';
-import { UserService } from './../user.service';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AppUser } from '../modules/app-user';
