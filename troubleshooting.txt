@@ -12,6 +12,15 @@ Bootstrap
 https://getbootstrap.com/docs/4.0/layout/grid/
 https://getbootstrap.com/docs/4.4/components/card/
 
+Icon angular-fontawesome for angular 8
+https://github.com/FortAwesome/angular-fontawesome
+https://github.com/FortAwesome/angular-fontawesome/blob/master/docs/usage/icon-library.md#using-the-icon-library
+
+$ npm install @fortawesome/fontawesome-svg-core --save
+$ npm install @fortawesome/free-solid-svg-icons --save
+# See Compatibility table below to choose a correct version
+$ npm install @fortawesome/angular-fontawesome@0.5.x --save
+
 *******************************************************
 DATA TABLE 
 
