@@ -1,1 +1,17 @@
-<p>admin-orders works!</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>User</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td> {{ order.datePlaced | date:shortDate }} </td>
+            <td><!--<a href="#" > {{ order.userId }}</a>--></td>
+            <td><a [routerLink]="['/admin/orders/', order.key]" >view</a></td>
+        </tr>
+    </tbody>
+</table>

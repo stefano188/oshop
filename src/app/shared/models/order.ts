@@ -1,12 +1,15 @@
 import { ShoppingCart } from './shopping-cart';
 
 export class Order {
+    key: string;
     datePlaced: number;
-    items: any[];
+    items: any[] = [];
 
     constructor(public userId: string, public shipping: any, shoppingCart: ShoppingCart) {
         this.datePlaced = new Date().getTime();
-        this.items = shoppingCart.items.map(i => {
+        this.items = !shoppingCart 
+          ? [] 
+          : shoppingCart.items.map(i => {
             return {
               product: {
                 title: i.title,
@@ -17,5 +20,13 @@ export class Order {
               totalPrice: i.totalPrice
             }
           });
+    }
+
+    get totalPrice() {
+      let total = 0;
+      this.items.forEach(element => {
+        total += element.totalPrice;
+      });
+      return total;
     }
 }

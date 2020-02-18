@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getAll() {
-    return this.db.list("/products").snapshotChanges().pipe(map(changes => {
+    return this.db.list("/products").snapshotChanges().pipe(map(changes => {  
       return changes.map(p => {
         const key = p.key;
         const val = p.payload.val();

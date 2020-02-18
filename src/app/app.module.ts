@@ -12,7 +12,6 @@ import { SharedModule } from './shared/shared.module';
 import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
