@@ -119,15 +119,8 @@ export class ProductFormComponent {
     </option>
 </select>
 
-
-
 <div class="list-group">
-    <a class="list-group-item list-group-item-action" 
-        routerLink="/"
-        [class.active]="!category"
-        (click)="onCategoryChanged()">
-        All Categories
-    </a>
+    ...
     <a *ngFor="let c of categories$ | async" 
         routerLink="/"
         [queryParams]="{ category: c.key }"
@@ -139,14 +132,16 @@ export class ProductFormComponent {
 </div>
 
 
+*******************************************************
+ASYNC AWAIT in Angular
 
-...
-"angularfire2": "^5.3.0",
-"bootstrap": "^4.4.1",
-"firebase": "^7.7.0",
-"firebase-tools": "^7.12.1",
-"g": "^2.0.1",
-"ng-angular8-datatable": "^0.9.11",
-"ng2-validation": "^4.2.0",
-...
+https://medium.com/@balramchavan/using-async-await-feature-in-angular-587dd56fdc77
 
+Get HttpClient result using Observable:
+ “subscribe” method is from “Observable” object. 
+Once subscribed, “subscribe” callback shall be executed whenever there is a new data produced by “Observer”. 
+Whereas promise’s “then()” callback handler shall be executed at max once. 
+So until and unless you have requirement to consume recurring data, do not use “subscribe”. 
+Use “toPromise()” instead. 
+If you have noticed examples given on Angular’s official documentation; 
+there is a heavy use of “toPromise”.
