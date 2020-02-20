@@ -24,12 +24,31 @@ export class OrderService {
     return this.db.list("/orders").snapshotChanges()
       .pipe(map(res => {
         return res.map(o => {
-          const orderVal = o.payload.val() as any;
-          let order = new Order(orderVal.userId, orderVal.shipping, null);
+          const orderPayload = o.payload.val() as any;
+          let order = new Order(orderPayload.userId, orderPayload.shipping, null);
+          order.datePlaced = orderPayload.datePlaced;
           order.key = o.key;
           return order;
         })
       }));
+  }
+
+  getAllByUserId(userId: string) {
+    return this.getAll()
+      .pipe(map(res => {
+        return res.filter(order => {
+          if (order.userId === userId) { 
+            return order;
+          }
+      } )
+    }));
+
+    // orders.forEach(element => {
+    //   if (element.userId === userId) {
+    //     filteredOrders.push(element)
+    //   }
+    // });
+    // return filteredOrders;
   }
 
   get(orderId: string) {

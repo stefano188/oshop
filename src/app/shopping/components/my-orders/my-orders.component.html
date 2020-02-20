@@ -1,1 +1,18 @@
-<p>my-orders works!</p>
+
+<h1>My Orders</h1>
+<div class="container" *ngIf="myOrders$ | async as myOrders" >
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of myOrders">
+                <td> {{ order.datePlaced | date:'medium' }} </td>
+                <td><a [routerLink]="['/my/orders/', order.key]" >view</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

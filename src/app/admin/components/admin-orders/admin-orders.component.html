@@ -1,4 +1,4 @@
-
+<h1>Orders</h1>
 <table class="table">
     <thead>
         <tr>
@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let order of orders">
-            <td> {{ order.datePlaced | date:shortDate }} </td>
+            <td> {{ order.datePlaced | date }} </td>
             <td><!--<a href="#" > {{ order.userId }}</a>--></td>
             <td><a [routerLink]="['/admin/orders/', order.key]" >view</a></td>
         </tr>

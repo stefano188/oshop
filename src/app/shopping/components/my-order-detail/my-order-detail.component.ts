@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Order } from 'shared/models/order';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from 'shared/services/order.service';
-import { Order } from 'shared/models/order';
-import { switchMap, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-admin-order-detail',
-  templateUrl: './admin-order-detail.component.html',
-  styleUrls: ['./admin-order-detail.component.css']
+  selector: 'app-my-order-detail',
+  templateUrl: './my-order-detail.component.html',
+  styleUrls: ['./my-order-detail.component.css']
 })
-export class AdminOrderDetailComponent implements OnInit {
+export class MyOrderDetailComponent implements OnInit {
 
   order$: Observable<Order>;
 

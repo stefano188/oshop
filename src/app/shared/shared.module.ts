@@ -17,11 +17,13 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCoffee, faLeaf, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    OrderSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { faCoffee, faLeaf, faShoppingCart } from '@fortawesome/free-solid-svg-ic
   exports: [
     ProductCardComponent,
     ProductQuantityComponent,
+    OrderSummaryComponent,
     CommonModule,
     NgbModule,
     FormsModule,
